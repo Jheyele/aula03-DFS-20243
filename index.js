@@ -8,8 +8,8 @@ const pool = new Pool({
     host: 'localhost',
     port: 5432,
     user: 'postgres',
-    password: 'admin123',
-    database: 'avanti'
+    password: 'YOUR_PASSWORD',
+    database: 'YOUR_DATABASE'
 })
 
 app.use(express.json())

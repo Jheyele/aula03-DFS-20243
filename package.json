@@ -1,18 +1,22 @@
 {
   "name": "aula03",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@prisma/client": "^5.21.1",
     "express": "^4.21.1",
-    "nodemon": "^3.1.7",
-    "pg": "^8.13.0"
+    "nodemon": "^3.1.7"
+  },
+  "devDependencies": {
+    "prisma": "^5.21.1"
   }
 }

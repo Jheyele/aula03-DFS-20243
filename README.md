@@ -9,46 +9,30 @@ Siga os passos abaixo para configurar e executar o projeto.
 
 ## Configuração do Banco de Dados
 
-1. Crie um banco de dados no PostgreSQL:
-    ```sql
-    CREATE DATABASE YOUR_DATABASE;
+1. Crie um banco de dados no PostgreSQL, caso ainda não tenha um.
+
+2. No diretório raiz do projeto, crie um arquivo `.env` com a seguinte variável de ambiente, configurando a string de conexão do seu banco de dados:
+    ```plaintext
+    DATABASE_URL="postgresql://USER:PASSWORD@localhost:5432/YOUR_DATABASE"
     ```
 
-2. Crie a tabela `clientes`:
-    ```sql
-    CREATE TABLE clientes (
-        id SERIAL PRIMARY KEY,
-        nome VARCHAR(100) NOT NULL,
-        email VARCHAR(150) UNIQUE NOT NULL,
-        telefone VARCHAR(20)
-    );
+## Configuração do Prisma
+
+1. Execute o comando abaixo para replicar o schema no banco de dados:
+    ```bash
+    npx prisma migrate dev
     ```
 
 ## Instalação e Execução
 
-1. Clone este repositório:
-
-2. Navegue até o diretório do projeto:
-
-3. Instale as dependências:
+1. Instale as dependências do projeto:
     ```bash
     npm install
     ```
 
-4. Configure as credenciais do banco de dados no arquivo `index.js`:
-    ```javascript
-    const pool = new Pool({
-        host: 'localhost',
-        port: 5432,
-        user: 'postgres',
-        password: 'YOUR_PASSWORD',
-        database: 'YOUR_DATABASE'
-    });
-    ```
-
-5. Inicie o servidor:
+2. Inicie o servidor:
     ```bash
     npm start
     ```
 
-6. A API estará disponível em `http://localhost:3001`.
+3. A API estará disponível em `http://localhost:3001`.

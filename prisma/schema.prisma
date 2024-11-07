@@ -12,14 +12,22 @@ model agendamentos {
   servico          String    @db.VarChar(128)
   data             DateTime  @db.Date()
   hora             DateTime  @db.Time(6)
-  cliente_id       String
-  clientes         clientes @relation(fields: [cliente_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cliente")
+  usuario_id       String
+  usuarios         usuarios @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cliente")
 }
 
-model clientes {
+model usuarios {
   id           String         @id @default(uuid())
   nome         String         @db.VarChar(100)
   email        String         @unique @db.VarChar(150)
+  senha        String
+  perfil       usuario_perfil @default(CLIENTE)
   telefone     String?        @db.VarChar(20)
   agendamentos agendamentos[]
+}
+
+enum usuario_perfil {
+  ADMIN
+  CLIENTE
+  FUNCIONARIO
 }

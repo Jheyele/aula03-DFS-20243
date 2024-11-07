@@ -1,10 +1,13 @@
 import { Router } from "express";
-import { clienteRoutes } from "./ClienteRoutes.js";
+import { usuarioRoutes } from "./UsuarioRoutes.js";
 import { agendamentoRoutes } from "./AgendamentoRoutes.js";
+import { LoginController } from "../controllers/LoginController.js";
 
-const router = Router()
+const loginController = new LoginController();
+const router = Router();
 
-router.use('/clientes', clienteRoutes);
-router.use('/agendamentos', agendamentoRoutes);
+router.use('/api/v1/usuarios', usuarioRoutes);
+router.use('/api/v1/agendamentos', agendamentoRoutes);
+router.post('/api/v1/login', loginController.login)
 
 export { router }

@@ -1,6 +1,5 @@
 import { prismaClient } from "../database/PrismaClient.js"
 
-
 export class AgendamentoController {
 
     async buscarAgendamentos (request, response) {
@@ -13,12 +12,12 @@ export class AgendamentoController {
     }
 
     async salvarAgendamento (request, response) {
-        const { servico, data, hora, clienteId } = request.body;
+        const { servico, data, hora, usuarioId } = request.body;
         try {
             const dataHora = new Date(`${data}T${hora}Z`);
             const agendamento = await prismaClient.agendamentos.create({
                 data:{
-                    servico, data: dataHora, hora: dataHora, cliente_id: clienteId
+                    servico, data: dataHora, hora: dataHora, usuario_id: usuarioId
                 }
             });
             return response.status(200).json(agendamento);
